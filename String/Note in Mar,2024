@@ -1,0 +1,23 @@
+2937.(Easy)
+字符串（比对前面的值一直到不相等）
+My solution:
+/*思路：从开始检查字符串前面的值是否相等，直到不等，记录检查了多少次，然后用size相减*/
+class Solution {
+public:
+    int findMinimumOperations(string s1, string s2, string s3) {
+        const int size1 = s1.size();
+        const int size2 = s2.size();
+        const int size3 = s3.size();
+        int len= min(size1,min(size2,size3));
+        int ptr = 0;
+
+        if(s1[0]!=s2[0]||s2[0]!=s3[0]||s1[0]!=s3[0]) return -1;
+
+        while(ptr<len){
+            if(s1[ptr]==s2[ptr]&&s2[ptr]==s3[ptr]&&s1[ptr]==s3[ptr]) ptr++;
+            else break;
+        }
+
+        return (abs(size1-ptr)+abs(size2-ptr)+abs(size3-ptr));
+    }
+};
