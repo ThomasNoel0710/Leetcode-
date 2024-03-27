@@ -1,5 +1,5 @@
-2937.(Easy)(String)
-字符串（比对前面的值一直到不相等）
+2937.(Easy)
+题目大意：字符串（比对前面的值一直到不相等）
 My solution:
 /*思路：从开始检查字符串前面的值是否相等，直到不等，记录检查了多少次，然后用size相减*/
 class Solution {
@@ -19,5 +19,30 @@ public:
         }
 
         return (abs(size1-ptr)+abs(size2-ptr)+abs(size3-ptr));
+    }
+};
+
+
+
+
+1556.(Easy)
+题目大意：给一个数字，在每三位后插入一个千分号'.'，比如1234567-->1.234.567
+My solution：
+/*思路：从后往前每三位加一个点号，题目很简单，注意迭代器的范围和用法，以及to_string()和insert()的使用*/
+class Solution {
+public:
+    string thousandSeparator(int n) {
+        string tem = to_string(n);
+        const int len = tem.size();
+        if(len<4) return tem;;
+
+        int times = (len-1)/3;
+
+        for(int i=0;i<times;i++){
+            tem.insert(tem.begin()+len-3-3*i,'.');
+        }
+
+
+        return tem;
     }
 };
