@@ -1,7 +1,7 @@
 2937.(Easy)
 题目大意：字符串（比对前面的值一直到不相等）
 My solution:
-/*思路：从开始检查字符串前面的值是否相等，直到不等，记录检查了多少次，然后用size相减*/
+思路：从开始检查字符串前面的值是否相等，直到不等，记录检查了多少次，然后用size相减
 class Solution {
 public:
     int findMinimumOperations(string s1, string s2, string s3) {
@@ -28,7 +28,7 @@ public:
 1556.(Easy)
 题目大意：给一个数字，在每三位后插入一个千分号'.'，比如1234567-->1.234.567
 My solution：
-/*思路：从后往前每三位加一个点号，题目很简单，注意迭代器的范围和用法，以及to_string()和insert()的使用*/
+思路：从后往前每三位加一个点号，题目很简单，注意迭代器的范围和用法，以及to_string()和insert()的使用
 class Solution {
 public:
     string thousandSeparator(int n) {
@@ -44,5 +44,46 @@ public:
 
 
         return tem;
+    }
+};
+
+
+
+
+1268. (Medium)
+题目大意：搜索引擎建议系统，根据输入的字母给出三个提示词
+My solution:
+思路：暴力破解
+class Solution {
+public:
+    vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
+        vector<vector<string>> result;
+        vector<string> res;
+        string typing;
+
+        int len1 = products.size();
+        int len2 = searchWord.size();
+        int count;
+
+        sort(products.begin(),products.end());
+
+        for(int i=0;i<len2;i++){
+            count = 0;
+            typing += searchWord[i];
+            for (int j=0;j<len1;j++){
+                for(int n=0;n<typing.size();n++){
+                    if(products[j][n] != typing[n]) break;
+                    else if(n==typing.size()-1){
+                        res.push_back(products[j]);
+                        count++;
+                    }
+                }
+                if(count>2) break;
+            }
+            result.push_back(res);
+            res = {};
+        }
+
+        return(result);
     }
 };
