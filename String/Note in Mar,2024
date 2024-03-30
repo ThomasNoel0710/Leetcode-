@@ -87,3 +87,29 @@ public:
         return(result);
     }
 };
+
+784.(Medium)
+题目大意：将字符串的大小写都返回，如"a1b2"，返回"a1b2""A1b2""A1B2""a1B2"
+思路：迭代循环
+class Solution {
+public:
+    vector<string> letterCasePermutation(string s) {
+        int len = s.size();
+        vector<string> res;
+
+        processing(s,res,len,0);
+        return res;
+    }
+    void processing(string &s,vector<string> &res,int len,int index){
+        if(len==0) res.push_back(s);
+        else if(isalpha(s[index])){
+            s[index] = toupper(s[index]);
+            processing(s,res,len-1,index+1);
+            s[index] = tolower(s[index]);
+            processing(s,res,len-1,index+1);
+        }
+        else{
+            processing(s,res,len-1,index+1);
+        }
+}
+};
