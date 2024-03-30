@@ -113,3 +113,36 @@ public:
         }
 }
 };
+
+791.(Medium)
+题目大意：给两个字符串，如order = "cba", s = "abcd"，其中在order中的按顺序排列，不在的随便，如这里是"cba"，d随便放哪
+思路：先s分成两份，在order中出现过的和没出现过的，然后前者排列，再加后者
+class Solution {
+public:
+    string customSortString(string order, string s) {
+        map<char,int> dic;
+        string tem = "";
+        string tem3 = "";
+
+        for(char c:order){
+            dic[c] = dic[c]+1;
+        }
+        for(char c:s){
+            if(dic[c]!=0) {
+                tem+= c;
+            }
+            else tem3+= c;
+
+         }
+        string tem2 = "";
+        for(char c:order){
+            for(char s:tem){
+                if(s==c) tem2 += s;
+            }
+        }
+        string res;
+        res = tem2+tem3;
+        return(res);
+
+    }
+};
