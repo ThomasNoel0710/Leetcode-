@@ -190,3 +190,21 @@ public:
     }
 
 };
+
+
+
+
+657.(Easy)
+题目大意 给定一个机器人 分别向上下左右(UDLR)走 判断是否返回原点
+思路：map存储值 比对 很简单
+class Solution {
+public:
+    bool judgeCircle(string moves) {
+        map<char,int> list;
+        for(char c:moves){
+            list[c]++;
+        }
+        if(list['U']==list['D']&&list['L']==list['R']) return true;
+        return false;
+    }
+};
