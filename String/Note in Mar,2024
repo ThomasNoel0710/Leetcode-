@@ -220,7 +220,7 @@ public:
 
 2483.(Medium)
 题目大意 给定一个字符串，只包含'Y'和'N',判断商店几点关门，关门前没人来或者关门后有人来都会有惩罚，求惩罚的最小值
-第一次提交的代码：程序没错，但复杂度O(N2)，超时了
+第一次提交的代码：程序没错，但复杂度O(N2)，超时了（感觉有点离谱，怎么会有商店开几千小时……）
 class Solution {
 public:
     int bestClosingTime(string customers) {
