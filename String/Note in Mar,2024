@@ -251,3 +251,38 @@ public:
         return fine;
     }
 };
+
+
+
+
+3085.(Medium)
+class Solution {
+public:
+    int minimumDeletions(string word, int k) {
+        map<char,int> list;
+        vector<int> arr;
+        int ans = INT_MAX;
+        int len;
+
+        for(char c:word){
+            list[c]++;
+        }
+        for(const auto&pair:list){
+            arr.push_back(pair.second);
+        }
+        len = arr.size();
+        sort(arr.begin(),arr.end());
+        int max = arr.back();
+        for(int i=1;i<=max;i++){
+            int cnt=0;
+            for(int j=0;j<len;j++) {
+                if(arr[j]>i+k)cnt += arr[j]-i-k;
+                else if(arr[j]<i) cnt+= arr[j];
+            }
+            ans = min(ans,cnt);
+
+        }
+        return ans;
+
+        }
+};
