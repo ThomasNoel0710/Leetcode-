@@ -1,4 +1,4 @@
-75 Sorted Colores
+75 Sorted Colores(Medium)
 题目大意 将给定数组按照[0,0,1,1,2,2]的顺序排列，要求在原地排列
 Solution:
 class Solution {
