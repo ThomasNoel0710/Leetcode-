@@ -22,3 +22,26 @@ public:
         b = tem;
     }
 };
+
+2363 Easy
+题目大意：给定两个二维数组 其中前一个值为序号，后一个值为值，要求返回一个二位数组，序号不变，序号同样的值相加
+Solution:
+class Solution {
+public:
+    vector<vector<int>> mergeSimilarItems(vector<vector<int>>& items1, vector<vector<int>>& items2) {
+        map<int,int> list;
+        vector<vector<int>> res;
+        int length = items1.size();
+        for(int i=0;i<length;i++){
+            list[items1[i][0]]  = list[items1[i][0]]+items1[i][1];
+        }
+        length = items2.size();
+        for(int i=0;i<length;i++){
+            list[items2[i][0]] = list[items2[i][0]]+items2[i][1];
+        }
+        for(const auto&pair:list){
+            res.push_back({pair.first,pair.second});
+        }
+        return res;
+    }
+};
