@@ -1,0 +1,24 @@
+75 Sorted Colores
+题目大意 将给定数组按照[0,0,1,1,2,2]的顺序排列，要求在原地排列
+Solution:
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int length = nums.size();
+        sortnum(nums,0,length);
+        sortnum(nums,1,length);
+    }
+    void sortnum(vector<int> &nums,int value,int length){
+        for(int i=0;i<length-1;i++){
+            for(int j=i+1;j<length;j++){
+                if(nums[i]>value&&nums[j]==value) swap(nums[i],nums[j]);
+            }
+        }
+    }
+    void swap(int &a,int &b){
+        int tem;
+        tem = a;
+        a = b;
+        b = tem;
+    }
+};
