@@ -67,3 +67,33 @@ public:
         return count;
     }
 };
+
+
+
+56.(Medium)
+题目大意：给定一个二维数组，合并相同区间
+思路：每次合并之后，在原数组中删除原来的两个元素，添加新的元素，然后递归调用函数直至全部循环完毕
+Solution:
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        int len = intervals.size();
+        bool merged = false;
+        sort(intervals.begin(),intervals.end());
+        for(int i=0;i<len-1;i++){
+            for(int j=i+1;j<len;j++){
+                if(intervals[j][0]>=intervals[i][0]&&intervals[j][0]<=intervals[i][1]){
+                    intervals.push_back({intervals[i][0],max(intervals[j][1],intervals[i][1])});
+                    intervals.erase(intervals.begin()+i);
+                    intervals.erase(intervals.begin()+j-1);
+                    i=0;
+                    len = len-1;
+                    merged = true;
+                    break;
+                }
+            }
+        }
+        if(merged) merge(intervals);
+        return intervals;
+    }
+};
