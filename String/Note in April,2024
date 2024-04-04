@@ -1,0 +1,13 @@
+2678. Easy
+题目大意：给一个类似于身份证号的东西，判断老年人数量
+Solution:题目很简单，比较值得注意的是要把字符转化成数字这一点
+class Solution {
+public:
+    int countSeniors(vector<string>& details) {
+        int count = 0;
+        for(int i=0;i<details.size();i++){
+            if((details[i][11]-'0')*10+(details[i][12]-'0')>60) count++;
+        }
+        return count;
+    }
+};
