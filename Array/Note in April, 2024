@@ -144,3 +144,35 @@ public:
         return count;
     }
 };
+
+
+
+807.(Medium)
+盖多少层楼可以在不改变天际线的基础上达到最大值？
+Solution:
+class Solution {
+public:
+    int maxIncreaseKeepingSkyline(vector<vector<int>> &grid) {
+        int res = 0;
+        int n = grid.size();
+        int times = n*n;
+        for(int i=0;i<times;i++){
+            res += findvalue(i,grid,n);
+        }
+
+        return res;
+    }
+    int findvalue(int num,vector<vector<int>> &grid,int n){
+        int line = num/n;
+        int row = num%n;
+        int max1=0;
+        int max2=0;
+        for(int i=0;i<n;i++){
+            if(grid[line][i]>max1) max1 = grid[line][i];
+        }
+        for(int i=0;i<n;i++){
+            if(grid[i][row]>max2) max2 = grid[i][row];
+        }
+        return(min(max1,max2)-grid[line][row]);
+    }
+};
