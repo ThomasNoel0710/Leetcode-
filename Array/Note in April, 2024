@@ -97,3 +97,24 @@ public:
         return intervals;
     }
 };
+
+
+
+406.(Medium)
+题目大意：有点复杂，建议去网站看
+Solution:
+贪心算法
+class Solution {
+public:
+    vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+        sort(people.begin(), people.end(), [](const vector<int> &a, const vector<int> &b) {
+            return a[0] > b[0] || (a[0] == b[0] && a[1] < b[1]);
+        });
+        vector<vector<int>> res;
+        int len = people.size();
+        for (int i = 0; i < len; i++) {
+            res.insert(res.begin() + people[i][1], people[i]);
+        }
+        return res;
+    }
+};
