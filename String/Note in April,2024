@@ -11,3 +11,31 @@ public:
         return count;
     }
 };
+
+
+
+383.(Easy)
+题目大意：查询第一个字符串是否为第二个的子集
+Solution:不难 注意数据结构和语法
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        map<char,int> map1,map2;
+        map1 = constuct(ransomNote);
+        map2 = constuct(magazine);
+        for(auto p = map1.begin();p!=map1.end();p++){
+            if(p->second>map2[p->first]) return false;
+        }
+        return true;
+
+
+    }
+    map<char,int> constuct(string sentence){
+        map<char,int> res;
+        int len = sentence.size();
+        for(int i=0;i<len;i++){
+            res[sentence[i]]++;
+        }
+        return res;
+    }
+};
