@@ -70,3 +70,33 @@ public:
         return true;
     }
 };
+
+
+
+125.检测是否为回文串
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        string sentence = "";
+        const int len = s.size();
+        bool signal = true;
+
+        for(int i=0;i<len;i++){
+            if(isalpha(s[i])||isdigit(s[i])) sentence += tolower(s[i]);
+        }
+
+        int pointer1=0;
+        int pointer2=sentence.size()-1;
+
+        while(pointer1<pointer2){
+            if(sentence[pointer1]!=sentence[pointer2]){
+                signal = false;
+                break;
+            }
+            pointer1++;
+            pointer2--;
+        }
+
+        return signal;
+    }
+};
