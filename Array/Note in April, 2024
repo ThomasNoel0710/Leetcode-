@@ -237,3 +237,23 @@ public:
         return res;
     }
 };
+
+
+
+274.(Medium)
+感觉挺简单 应该算easy
+class Solution {
+public:
+    int hIndex(vector<int>& citations) {
+        int len = citations.size();
+        sort(citations.begin(),citations.end());
+        int res = 0;
+        int cit,num,h;
+        for(int i=0;i<len;i++){
+            cit=citations[i];
+            num = len-i;
+            res = max(res,min(cit,num));
+        }
+        return res;
+    }
+};
