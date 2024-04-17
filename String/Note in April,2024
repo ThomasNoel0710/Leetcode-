@@ -1,6 +1,6 @@
 2678. Easy
 题目大意：给一个类似于身份证号的东西，判断老年人数量
-Solution:题目很简单，比较值得注意的是要把字符转化成数字这一点
+Solution:比较值得注意的是要把字符转化成数字这一点
 class Solution {
 public:
     int countSeniors(vector<string>& details) {
@@ -16,7 +16,7 @@ public:
 
 383.(Easy)
 题目大意：查询第一个字符串是否为第二个的子集
-Solution:不难 注意数据结构和语法
+Solution:注意数据结构和语法
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
@@ -43,7 +43,7 @@ public:
 
 
 290.(Easy)
-比较字符串模式是否相同，比较简单，但是要注意给定的第二个是string，要将其转化为数组
+比较字符串模式是否相同，要注意给定的第二个是string，要将其转化为数组
 class Solution {
 public:
     bool wordPattern(string pattern, string s) {
