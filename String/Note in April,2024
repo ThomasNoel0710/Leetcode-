@@ -100,3 +100,34 @@ public:
         return signal;
     }
 };
+
+151. 将字符串中的单词提取出来并反转
+class Solution {
+public:
+    string reverseWords(string s) {
+        vector<string> dic;
+        s = s + ' ';
+        const int len = s.size();
+        string tem;
+
+        for(int i=0;i<len;i++){
+            if(s[i]==' '){
+                if(!tem.empty()) dic.push_back(tem);
+                tem = "";
+            }
+            else tem += s[i];
+        }
+
+        reverse(dic.begin(),dic.end());
+
+        const int len2 = dic.size();
+        string result;
+
+        for(int i=0;i<len2;i++){
+            result += dic[i];
+            if(i!=len2-1) result += " ";
+        }
+        return result;
+
+    }
+};
