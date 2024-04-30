@@ -323,3 +323,19 @@ public:
         return index;
     }
 };
+
+121.(Easy)
+思路还是蛮难想到的
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int maxv = 0;
+        int minp = INT_MAX;
+        int len = prices.size();
+        for(int i=0;i<len;i++){
+            if(prices[i]<minp) minp = prices[i];
+            else if(prices[i]-minp>maxv) maxv = prices[i]-minp;
+        }
+        return maxv;
+    }
+};
